@@ -15,7 +15,7 @@ export default function ResultsPage() {
         setRollNumber(e.target.value);
     };
 
-  
+  console.log(stage);
     
     const handleSearch = () => {
         const student = Result.resalt.find(s => s.rollNumber.toString() === rollNumber);
@@ -29,7 +29,8 @@ export default function ResultsPage() {
             }));
 
             setResult({
-                name: student.name,
+                name: student.name,GPA: student.GPA,
+
                 subjects: subjects
             });
             setnoResult(false)
@@ -51,14 +52,14 @@ export default function ResultsPage() {
                         اختر المرحلة:
                         <select value={stage} onChange={handleStageChange}>
                             <option value="">اختر المرحلة</option>
-                            <option value="1">الاولي نظم</option>
-                            <option value="2">الثانية نظم</option>
-                            <option value="3">الثالثة نظم</option>
-                            <option value="4">الرابعة نظم</option>
-                            <option value="5">الاولي محاسبة</option>
-                            <option value="6">الثانية محاسبة</option>
-                            <option value="7">الثالثة محاسبة</option>
-                            <option value="8">الرابعة محاسبة</option>
+                            <option value="BIS1">الاولي نظم</option>
+                            <option value="BIS2">الثانية نظم</option>
+                            <option value="BIS3">الثالثة نظم</option>
+                            <option value="BIS4">الرابعة نظم</option>
+                            <option value="Acconting1">الاولي محاسبة</option>
+                            <option value="Acconting2">الثانية محاسبة</option>
+                            <option value="Acconting3">الثالثة محاسبة</option>
+                            <option value="Acconting4">الرابعة محاسبة</option>
                         </select>
                     </label>
                     <label>
@@ -78,11 +79,14 @@ export default function ResultsPage() {
                     <div className="result-table">
                         <h2>النتيجة</h2>
                         <p>اسم الطالب: {result.name}</p>
+                        <p>المعدل: {result.GPA}</p>
+                        {console.log(result)}
                         <table border={2}>
                             <thead>
                                 <tr>
                                     <th>المادة</th>
                                     <th>الدرجة</th>
+                                
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +94,7 @@ export default function ResultsPage() {
                                     <tr key={index}>
                                         <td>{subject.name}</td>
                                         <td>{subject.grade}</td>
+                                     
                                     </tr>
                                 ))}
                             </tbody>
